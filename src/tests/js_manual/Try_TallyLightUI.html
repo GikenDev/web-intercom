@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/TallyLightUI/TallyLightUI.css">
+    <style>
+      #test-controls {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 100; /* must be view on tally view */
+      }
+    </style>
+    <script type="module">
+      /**
+       * Test for `TallyLightUI.js`
+       *
+       * Test steps:
+       *   1. Execute `main.js` (in same directory) with Deno - `deno run --allow-net --allow-read main.js`
+       *   2. Access to `http://localhost:8000/Try_TallyLightUI.html` with browser
+       *   3. Click test control buttons
+       *
+       * Test cases:
+       *   - Can view a text of on tally light
+       *   - Can toggle light red/green/OFF
+       */
+      import { TallyLightUI } from "/static/TallyLightUI/TallyLightUI.js";
+
+      window.addEventListener("load", () => {
+        const tally_light_ui = new TallyLightUI("1");
+        document.getElementById("button-turn-red"  ).addEventListener("click", () => tally_light_ui.set_light_red());
+        document.getElementById("button-turn-green").addEventListener("click", () => tally_light_ui.set_light_green());
+        document.getElementById("button-turn-off"  ).addEventListener("click", () => tally_light_ui.set_light_off());
+      });
+    </script>
+  </head>
+
+  <body>
+    <div id="test-controls">
+      <button id="button-turn-red"  >Turn red</button><br>
+      <button id="button-turn-green">Turn green</button><br>
+      <button id="button-turn-off"  >Turn OFF</button>
+    </div>
+  </body>
+</html>
