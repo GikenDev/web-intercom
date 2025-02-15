@@ -4,6 +4,8 @@
  * @author aKuad
  */
 
+import { Atem } from "npm:atem-connection";
+
 import { AudioMixer } from "./AudioMixer.ts";
 import { is_audio_packet, packet_audio_encode, packet_audio_decode } from "../static/packet_conv/audio.js";
 
@@ -13,8 +15,9 @@ import { is_audio_packet, packet_audio_encode, packet_audio_decode } from "../st
  *
  * @param socket WebSocket for communicate client
  * @param audio_mixer AudioMixer of server core
+ * @param _atem Connected Atem object to read state
  */
-export function main_audio(socket: WebSocket, audio_mixer: AudioMixer): void {
+export function main_audio(socket: WebSocket, audio_mixer: AudioMixer, _atem: Atem): void {
   socket.binaryType = "arraybuffer";
   let lane_id: number;
 

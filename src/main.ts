@@ -7,6 +7,8 @@
 import { serveDir } from "jsr:@std/http@1";
 import { parseArgs } from "jsr:@std/cli@^1.0.6/parse-args";
 
+import { Atem } from "npm:atem-connection";
+
 import { main_audio } from "./modules/main_audio.ts";
 import { main_mixer } from "./modules/main_mixer.ts";
 import { AudioMixer } from "./modules/AudioMixer.ts";
@@ -17,14 +19,27 @@ let is_mixer_client_in_use = false;
 
 const args = parseArgs(Deno.args, {
   boolean: ["tls"],
-  default: { tls: false }
+  string: ["atem-ip"],
+  default: { tls: false, "atem-ip": "" }
 });
 
 
+/* Enable/disable keys by --tls option */
 const serve_conf = {
   hostname: "0.0.0.0",
   cert: args.tls ? Deno.readTextFileSync("cert.pem") : undefined,
   key:  args.tls ? Deno.readTextFileSync("key.pem")  : undefined
+}
+
+
+/* Atem connection for tarry light system */
+const atem = new Atem();
+const atem_ip = args["atem-ip"];
+if(atem_ip !== "") {
+  console.log(`Tally light system enabled with ATEM IP: ${atem_ip}`);
+  atem.connect(atem_ip);
+} else {
+  console.log(`Tally light system disabled`);
 }
 
 
@@ -39,7 +54,7 @@ Deno.serve(serve_conf, request => {
     }
 
     const { socket, response } = Deno.upgradeWebSocket(request);
-    main_audio(socket, audio_mixer);
+    main_audio(socket, audio_mixer, atem);
     return response;
 
 

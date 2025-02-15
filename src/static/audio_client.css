@@ -48,6 +48,7 @@ header {
   width: 100vw;
   text-align: center;
   position: fixed;
+  z-index: 100; /* Must be view */
   bottom: 10vh;
 }
 
