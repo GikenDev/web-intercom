@@ -52,14 +52,14 @@ openssl req -newkey rsa:4096 -x509 -nodes -subj '/CN=common_name_here' -keyout k
 Then run with `--tls` option:
 
 ```sh
-deno run --allow-net --allow-read --tls main.ts
+deno run --allow-net --allow-read main.ts --tls
 ```
 
 ## Client usage
 
 ### Audio client
 
-Access to `http(s)://server.address/`
+Access to `http(s)://server.address:8000/`
 
 Type lane name, then click 'connect'.
 
@@ -67,7 +67,7 @@ Type lane name, then click 'connect'.
 
 ### Mixer client
 
-Access to `http(s)://server.address/mixer.html`
+Access to `http(s)://server.address:8000/mixer.html`
 
 Type lane name, then click 'connect'.
 

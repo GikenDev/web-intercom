@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+.TallyLightUI-view {
+  width: 100vw;
+  height: 100vh;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  background-color: hsl(0, 0%, 30%);
+  color: #000;
+  font-weight: bold;
+  font-size: 80vh;
+  line-height: 100vh;
+  text-align: center;
+}
