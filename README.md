@@ -1,6 +1,6 @@
 # web-intercom
 
-[![Version](https://img.shields.io/github/v/release/aKuad/py-web-intercom?label=version)](https://github.com/aKuad/py-web-intercom/releases) [![License](https://img.shields.io/github/license/aKuad/py-web-intercom)](https://github.com/aKuad/py-web-intercom/blob/main/LICENSE)
+[![Version](https://img.shields.io/github/v/release/aKuad/web-intercom?label=version)](https://github.com/aKuad/py-web-intercom/releases) [![License](https://img.shields.io/github/license/aKuad/web-intercom)](https://github.com/aKuad/py-web-intercom/blob/main/LICENSE)
 
 Inter-communication system on browser via LAN. Powered by Deno.
 
@@ -25,6 +25,7 @@ As requirements, install [Deno](https://deno.com/) at first.
 Just only run:
 
 ```sh
+cd src
 deno run --allow-net --allow-read main.ts
 ```
 
@@ -52,6 +53,7 @@ openssl req -newkey rsa:4096 -x509 -nodes -subj '/CN=common_name_here' -keyout k
 Then run with `--tls` option:
 
 ```sh
+# on src directory
 deno run --allow-net --allow-read main.ts --tls
 ```
 
