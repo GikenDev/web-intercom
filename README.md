@@ -4,6 +4,8 @@
 
 Inter-communication system on browser via LAN. Powered by Deno.
 
+ATEM tally light system extended version of [aKuad/web-intercom](https://github.com/aKuad/web-intercom).
+
 ![Top image](./assets/top-image.webp)
 
 ## Features
