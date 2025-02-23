@@ -14,10 +14,7 @@ globalThis.addEventListener("load", () => {
   document.getElementById("control-container").addEventListener("input", e => {
     const input_name = e.target.value;
 
-    if(input_name === "") {
-      // If empty input
-      set_input_error("Lane name can't be empty");
-    } else if(!(/^[\x20-\x7F]*$/.test(input_name))) {
+    if(!(/^[\x20-\x7F]*$/.test(input_name))) {
       // If non ascii input
       set_input_error("Non ascii disallowed for lane name");
     } else {
@@ -42,7 +39,8 @@ globalThis.addEventListener("load", () => {
   /* Start connection */
   document.getElementById("connect-start").addEventListener("click", () => {
     // Behavior properties
-    const lane_name = document.getElementById("lane-name-input").value;
+    //// Try to set input value, if empty, set placeholder value
+    const lane_name = document.getElementById("lane-name-input").value || document.getElementById("lane-name-input").placeholder;
     const is_tally_mode = 1 <= Number(lane_name) && Number(lane_name) <= 8; // If Number(lane_name) is NaN, it will be false
 
     // Prevent system lock or display sleep
