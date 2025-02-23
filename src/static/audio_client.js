@@ -10,11 +10,16 @@ import { TallyLightUI } from "./TallyLightUI/TallyLightUI.js";
 
 
 globalThis.addEventListener("load", () => {
+  /* Restore last lane name */
+  // If storage 'lane-name-last' is null, set empty string
+  document.getElementById("lane-name-input").value = localStorage.getItem("lane-name-last") || "";
+
+
   /* Input checking */
   document.getElementById("control-container").addEventListener("input", e => {
-    const input_name = e.target.value;
+    const lane_name_input = e.target.value;
 
-    if(!(/^[\x20-\x7F]*$/.test(input_name))) {
+    if(!(/^[\x20-\x7F]*$/.test(lane_name_input))) {
       // If non ascii input
       set_input_error("Non ascii disallowed for lane name");
     } else {
@@ -39,8 +44,9 @@ globalThis.addEventListener("load", () => {
   /* Start connection */
   document.getElementById("connect-start").addEventListener("click", () => {
     // Behavior properties
-    //// Try to set input value, if empty, set placeholder value
-    const lane_name = document.getElementById("lane-name-input").value || document.getElementById("lane-name-input").placeholder;
+    const lane_name_input = document.getElementById("lane-name-input").value;
+    const lane_name = lane_name_input || document.getElementById("lane-name-input").placeholder;  // Try to set input value, if empty, set placeholder value
+    localStorage.setItem("lane-name-last", lane_name_input);  // Store input lane name
     const is_tally_mode = 1 <= Number(lane_name) && Number(lane_name) <= 8; // If Number(lane_name) is NaN, it will be false
 
     // Prevent system lock or display sleep
