@@ -98,6 +98,10 @@ Then view all lanes fader and meter. Move fader to control gain of each lane.
 
 ![Mixer client UI - Volume control](./assets/ui-image-mixer-client-2.webp)
 
+## Using library
+
+[atem-connection](https://www.npmjs.com/package/atem-connection) - Copyright (c) 2023 Norsk rikskringkasting AS
+
 ## License
 
 [CC0-1.0](https://github.com/aKuad/py-web-intercom/blob/main/LICENSE)
