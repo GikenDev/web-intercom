@@ -104,4 +104,4 @@ Then view all lanes fader and meter. Move fader to control gain of each lane.
 
 ## License
 
-[CC0-1.0](https://github.com/aKuad/py-web-intercom/blob/main/LICENSE)
+[CC0-1.0](https://github.com/GikenDev/web-intercom/blob/main/LICENSE)
